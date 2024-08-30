@@ -14,6 +14,7 @@ const Navbar = ({ setIsLoggedIn }) => {
         navigate('/login');
         setIsLoggedIn(false);
     };
+
     return (
         user && token && (
             <motion.nav
@@ -22,30 +23,31 @@ const Navbar = ({ setIsLoggedIn }) => {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
             >
-                <div className="container mx-auto flex justify-between items-center">
+                <div className="container mx-auto flex flex-wrap justify-between items-center">
                     <motion.div
-                        className="text-white font-bold text-2xl"
+                        className="text-white font-bold text-xl md:text-2xl"
                         whileHover={{ scale: 1.1 }}
                     >
                         <Link to="/">Book Management</Link>
                     </motion.div>
-                    <div className="space-x-6 flex items-center">
+                    <div className="flex flex-wrap items-center space-x-4 md:space-x-6">
                         {data.map((item) => (
                             <motion.div
                                 key={item.id}
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
+                                className="w-full md:w-auto text-center md:text-left"
                             >
                                 <Link
                                     to={item.link}
-                                    className="text-gray-200 hover:text-white transition-colors duration-300"
+                                    className="text-gray-200 hover:text-white transition-colors duration-300 block md:inline-block py-2 md:py-0"
                                 >
                                     {item.title}
                                 </Link>
                             </motion.div>
                         ))}
                         <motion.button
-                            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors duration-300"
+                            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors duration-300 mt-2 md:mt-0 w-full md:w-auto"
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={logoutHandler}
