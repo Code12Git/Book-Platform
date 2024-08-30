@@ -14,7 +14,12 @@ connection()
 
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://book-exchange-platform-assignment.netlify.app', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],  
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+}));
+
 
 app.use('/api/v1/users',userRoute)
 app.use('/api/v1/books',bookRoute)
